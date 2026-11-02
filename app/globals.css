@@ -1,0 +1,169 @@
+@import "tailwindcss";
+
+:root {
+  --color-bg: #ffffff;
+  --color-surface: #ffffff;
+  --color-surface-2: #f4f4f4;
+  --color-ink: #141414;
+  --color-ink-2: #6b6b6b;
+  --color-line: #e3e3e3;
+  --color-brand: #1d7a4c;
+  --color-brand-soft: #ddf0e5;
+  --color-accent: #f4a241;
+  --color-accent-soft: #ffead2;
+  --color-signal: #f2b705;
+  --color-good: #1d9a5c;
+  --color-good-bg: #ddf0e5;
+  --color-mid: #c97a12;
+  --color-mid-bg: #fbebcb;
+  --color-bad: #ff6b35;
+  --color-bad-bg: #ffe4d8;
+}
+
+:root[data-theme="dark"] {
+  --color-bg: #121212;
+  --color-surface: #1b1b1b;
+  --color-surface-2: #242424;
+  --color-ink: #f2f2f2;
+  --color-ink-2: #a3a3a3;
+  --color-line: #2e2e2e;
+  --color-brand: #46c98d;
+  --color-brand-soft: #16352a;
+  --color-accent: #ff9d45;
+  --color-accent-soft: #3a2817;
+  --color-signal: #f2c230;
+  --color-good: #52c98a;
+  --color-good-bg: #16352a;
+  --color-mid: #e4ae52;
+  --color-mid-bg: #3a2d14;
+  --color-bad: #ff8a5f;
+  --color-bad-bg: #3f2318;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --color-bg: #121212;
+    --color-surface: #1b1b1b;
+    --color-surface-2: #242424;
+    --color-ink: #f2f2f2;
+    --color-ink-2: #a3a3a3;
+    --color-line: #2e2e2e;
+    --color-brand: #46c98d;
+    --color-brand-soft: #16352a;
+    --color-accent: #ff9d45;
+    --color-accent-soft: #3a2817;
+    --color-signal: #f2c230;
+    --color-good: #52c98a;
+    --color-good-bg: #16352a;
+    --color-mid: #e4ae52;
+    --color-mid-bg: #3a2d14;
+    --color-bad: #ff8a5f;
+    --color-bad-bg: #3f2318;
+  }
+}
+
+@theme inline {
+  --color-bg: var(--color-bg);
+  --color-surface: var(--color-surface);
+  --color-surface-2: var(--color-surface-2);
+  --color-ink: var(--color-ink);
+  --color-ink-2: var(--color-ink-2);
+  --color-line: var(--color-line);
+  --color-brand: var(--color-brand);
+  --color-brand-soft: var(--color-brand-soft);
+  --color-accent: var(--color-accent);
+  --color-accent-soft: var(--color-accent-soft);
+  --color-signal: var(--color-signal);
+  --color-good: var(--color-good);
+  --color-good-bg: var(--color-good-bg);
+  --color-mid: var(--color-mid);
+  --color-mid-bg: var(--color-mid-bg);
+  --color-bad: var(--color-bad);
+  --color-bad-bg: var(--color-bad-bg);
+
+  --font-display: var(--font-familjen-grotesk), ui-sans-serif, system-ui, sans-serif;
+  --font-body: var(--font-figtree), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains-mono), ui-monospace, SFMono-Regular, monospace;
+}
+
+html {
+  color-scheme: light;
+}
+html:has(:root[data-theme="dark"]) {
+  color-scheme: dark;
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+}
+
+@layer base {
+  /* Scoped to @layer base so Tailwind border-color utilities (border-ink,
+     border-transparent, etc.) can still override this default — an
+     unlayered `*` rule would otherwise always win over layered utilities
+     regardless of specificity, silently flattening every custom border
+     color back to this default. */
+  * {
+    border-color: var(--color-line);
+  }
+}
+
+button,
+a {
+  touch-action: manipulation;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-brand);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Text inputs use their own border/underline styling for focus, never the
+   accent ring above — this rule's higher specificity wins regardless of
+   utility-class ordering. */
+input:focus,
+input:focus-visible,
+textarea:focus,
+textarea:focus-visible,
+select:focus,
+select:focus-visible {
+  outline: none;
+}
+
+/* Next.js focuses a wrapping element on route change for screen-reader
+   announcement. That focus is programmatic, not a real keyboard interaction,
+   so some browsers skip :focus-visible matching and fall back to the
+   default UA outline (the "blue box around the whole page" look). Any
+   element the app marks focusable-but-not-tabbable (tabindex="-1") is such
+   a target, never something a user tabs to, so it never needs a visible
+   ring. */
+[tabindex="-1"]:focus {
+  outline: none;
+}
+
+/* Universal tap feedback: every button/link visibly depresses on press, so
+   a tap is immediately confirmed as registered — independent of whatever
+   hover/active styling an individual component layers on top. */
+button:not(:disabled),
+a,
+[role="button"] {
+  transition: transform 100ms ease, opacity 100ms ease;
+}
+button:not(:disabled):active,
+a:active,
+[role="button"]:active {
+  transform: scale(0.96);
+  opacity: 0.8;
+}
