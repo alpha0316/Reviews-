@@ -159,7 +159,7 @@ export default function SearchPage() {
   }
 
   return (
-    <div className="fixed inset-0 z-40 mx-auto flex w-full max-w-[480px] flex-col bg-surface">
+    <div className="fixed inset-0 z-40 mx-auto flex w-full max-w-120 flex-col bg-surface">
       <div className="flex shrink-0 items-center gap-2 bg-surface px-4 pt-4 pb-3">
         <Link
           href="/"

@@ -31,10 +31,7 @@ export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   viewportFit: "cover",
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
-    { media: "(prefers-color-scheme: dark)", color: "#0f1613" },
-  ],
+  themeColor: "#ffffff",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -45,7 +42,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     >
       <body className="h-svh overflow-hidden flex flex-col bg-bg text-ink font-body">
         <IconProvider>
-          <div className="mx-auto flex h-svh w-full max-w-[480px] flex-col bg-bg">
+          <div className="mx-auto flex h-svh w-full max-w-120 flex-col bg-bg">
             <div className="flex-1 overflow-y-auto overscroll-contain">{children}</div>
             <BottomNav />
           </div>

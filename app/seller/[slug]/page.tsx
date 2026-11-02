@@ -82,7 +82,7 @@ export default async function SellerPage({
         </Link>
       </div>
 
-      <div className="fixed inset-x-0 bottom-0 z-40 mx-auto w-full max-w-[480px] bg-bg px-4 pb-[max(env(safe-area-inset-bottom),16px)] pt-3">
+      <div className="fixed inset-x-0 bottom-0 z-40 mx-auto w-full max-w-120 bg-bg px-4 pb-[max(env(safe-area-inset-bottom),16px)] pt-3">
         <Link
           href={`/review/new?type=online_seller&subject=${seller.id}`}
           className="flex min-h-12 w-full items-center justify-center rounded-full bg-ink font-semibold text-white shadow-[0_8px_24px_-8px_rgba(20,20,20,0.5)] transition-opacity hover:opacity-90"

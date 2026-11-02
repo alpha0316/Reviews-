@@ -33,7 +33,7 @@ export default async function DiscoverPage({
 
   return (
     <main className="flex flex-col">
-      <header className="sticky top-0 z-20 flex flex-col items-center gap-[7px] border-b border-black/5 bg-white px-4 pb-3 pt-2 shadow-[0px_4px_12px_-4px_rgba(12,12,13,0.10)]">
+      <header className="sticky top-0 z-20 flex flex-col items-center gap-1.75 border-b border-black/5 bg-white px-4 pb-3 pt-2 shadow-[0px_4px_12px_-4px_rgba(12,12,13,0.10)]">
         <div className="flex w-full items-center gap-3">
           <span className="shrink-0 rounded-full" aria-label="Ofie" role="img">
             <UserAvatarBadge size={36} bordered />
@@ -41,7 +41,7 @@ export default async function DiscoverPage({
           <Link
             href="/search"
             aria-label="Search location or business"
-            className="relative flex h-9 flex-1 items-center gap-3 rounded-3xl bg-white px-3 text-sm text-black/60 shadow-[0px_1px_4px_0px_rgba(12,12,13,0.05),0px_1px_4px_0px_rgba(12,12,13,0.10)] outline outline-1 outline-offset-[-1px] outline-black/10"
+            className="relative flex h-9 flex-1 items-center gap-3 rounded-3xl bg-white px-3 text-sm text-black/60 shadow-[0px_1px_4px_0px_rgba(12,12,13,0.05),0px_1px_4px_0px_rgba(12,12,13,0.10)] outline -outline-offset-1 outline-black/10"
           >
             <SearchIcon size={20} className="shrink-0" />
             Search Location
@@ -49,9 +49,9 @@ export default async function DiscoverPage({
           <button
             type="button"
             aria-label="Notifications"
-            className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-white shadow-[0px_1px_4px_0px_rgba(12,12,13,0.05),0px_1px_4px_0px_rgba(12,12,13,0.10)] outline outline-1 outline-offset-[-1px] outline-black/10"
+            className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-white shadow-[0px_1px_4px_0px_rgba(12,12,13,0.05),0px_1px_4px_0px_rgba(12,12,13,0.10)] outline -outline-offset-1 outline-black/10"
           >
-            <Bell weight="fill" className="h-[18px] w-[18px] text-ink" />
+            <Bell weight="fill" className="h-4.5 w-4.5 text-ink" />
           </button>
         </div>
       </header>
@@ -95,7 +95,7 @@ export default async function DiscoverPage({
                 className="flex items-center justify-between overflow-hidden rounded-2xl bg-surface shadow-[0px_1px_4px_0px_rgba(12,12,13,0.05)] transition-transform hover:-translate-y-0.5 active:scale-[0.98]"
               >
                 <div className="flex min-w-0 flex-1 flex-col gap-1">
-                  <div className="flex items-start gap-[11px] p-1.5">
+                  <div className="flex items-start gap-2.75 p-1.5">
                     <EntityAvatarBadge name={item.name} size={32} />
                     <div className="min-w-0 flex-1 pt-0.5">
                       <p className="truncate text-sm font-medium text-black">{item.name}</p>
@@ -111,7 +111,7 @@ export default async function DiscoverPage({
                   </div>
                 </div>
                 <div
-                  className={`h-[87px] w-[98px] shrink-0 ${item.thumbnailTone ?? "bg-surface-2"}`}
+                  className={`h-21.75 w-24.5 shrink-0 ${item.thumbnailTone ?? "bg-surface-2"}`}
                   aria-hidden
                 />
               </Link>
